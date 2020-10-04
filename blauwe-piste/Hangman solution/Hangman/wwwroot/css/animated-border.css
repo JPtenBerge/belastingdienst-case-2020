@@ -1,0 +1,68 @@
+﻿/* thanks to https://codepen.io/comehope/pen/YLqbXy */
+.box .content {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: pink;
+}
+
+.box {
+	width: 300px;
+	height: 300px;
+	box-sizing: border-box;
+	padding: 15px;
+	position: relative;
+	overflow: hidden;
+}
+
+	/* a bi of customization here to make the animated border good/bad */
+	.box.good::before, .box.bad::before {
+		content: '';
+		position: absolute;
+		width: 150%;
+		height: 150%;
+		transform: translateX(-20%) translateY(-20%) rotate(-45deg);
+		animation: animate 20s linear infinite;
+	}
+	.box.good::before {
+		background: repeating-linear-gradient( #008000 0%, #008000 7.5px, lightgreen 7.5px, lightgreen 15px, #008000 15px, #008000 22.5px, lightgreen 22.5px, lightgreen 30px);
+	}
+	.box.bad::before {
+		background: repeating-linear-gradient( #800000 0%, #800000 7.5px, red 7.5px, red 15px, #800000 15px, #800000 22.5px, red 22.5px, red 30px);
+	}
+
+	.box .content {
+		position: relative;
+		background-color: white;
+		flex-direction: column;
+		box-sizing: border-box;
+		padding: 30px;
+		text-align: center;
+		font-family: sans-serif;
+		z-index: 2;
+	}
+
+	.box,
+	.box .content {
+		box-shadow: 0 0 2px green, 0 0 5px rgba(0, 0, 0, 1), inset 0 0 5px rgba(0, 0, 0, 1);
+		border-radius: 10px;
+	}
+
+		.box .content h2 {
+			color: deeppink;
+		}
+
+		.box .content p {
+			color: dimgray;
+		}
+
+@keyframes animate {
+	from {
+		background-position: 0;
+	}
+
+	to {
+		background-position: 0 450px;
+	}
+}
