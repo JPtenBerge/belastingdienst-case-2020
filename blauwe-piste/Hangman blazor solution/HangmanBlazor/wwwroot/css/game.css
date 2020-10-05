@@ -1,0 +1,65 @@
+﻿body {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-family: 'Lucida Sans', sans-serif;
+	font-weight: bold;
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+#game-container {
+	display: flex;
+}
+#game-container > * {
+	flex: 1;
+}
+
+#new-game {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+#word-to-guess {
+	font-size: 2rem;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.hangmanGame {
+	margin-right: 20px;
+	max-width: 400px;
+}
+
+#letters li {
+	border: 1px solid grey;
+	padding: 5px;
+	margin: 5px;
+	float: left;
+}
+#letters li:nth-child(9n + 1) {
+	clear: left;
+}
+#letters a {
+	text-decoration: none;
+	color: white;
+}
+#letters li.guessed {
+	opacity: 0.5;
+	text-decoration: line-through;
+}
+#word-guessed, #word-not-guessed {
+	padding: 25px;
+	color: black;
+}
+#word-guessed {
+	background: lightgreen;
+}
+#word-not-guessed {
+	background: #d34f4f;
+}
+p {
+	margin-bottom: 16px;
+}

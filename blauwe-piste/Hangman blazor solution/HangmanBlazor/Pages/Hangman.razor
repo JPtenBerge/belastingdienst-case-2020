@@ -1,0 +1,110 @@
+﻿@page "/hangman"
+
+<h1>Hangman</h1>
+
+<a @onclick="Reset" id="new-game">Nieuw spel</a>
+
+<div id="game-container">
+    @* Visual Hangman representation, thanks to https://codepen.io/jaga3421/pen/Joedvr *@
+    @{
+        var stateClasses = "";
+        for (int i = 1; i <= NrOfIncorrectGuesses; i++)
+        {
+            stateClasses += $" hang{i}";
+        }
+    }
+    <div class="wrapper hangmanGame">
+        <div id="hangMan">
+            <div class="indicator">
+                <span class="maxTry">@NrOfIncorrectGuesses</span>/<span class="remaining">@MaxNrOfGuesses</span>
+            </div>
+            <div class="hangman @stateClasses">
+                <div class="shaft"></div>
+                <div class="pole"></div>
+                <div class="rope"></div>
+                <div class="base"></div>
+                <div class="man">
+                    <div class="wrapperMan">
+                        <div class="face"></div>
+                        <div class="hands"></div>
+                        <div class="legs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @* Show the word to guess *@
+        <p id="word-to-guess">
+            @* if game is over and word has not been guessed, show word *@
+            @if (!WordGuessed && NrOfIncorrectGuesses == MaxNrOfGuesses)
+            {
+                <text>@WordToGuess</text>
+            }
+            else
+            {
+                foreach (var letter in WordToGuess)
+                {
+                    if (letter.ToString() == " ")
+                    {
+                        <span>&nbsp;</span>
+                    }
+                    else if (!GuessedLetters.Contains(letter.ToString().ToUpper()))
+                    {
+                        <span>_</span>
+                    }
+                    else
+                    {
+                        <span>@letter</span>
+                    }
+                    <text>&nbsp;</text>
+                }
+            }
+        </p>
+
+        @* Show the letters *@
+        @{
+            var letters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
+                                 "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+                                 "W", "X", "Y", "Z"};
+        }
+
+        @if (!WordGuessed && NrOfIncorrectGuesses != MaxNrOfGuesses)
+        {
+            <ul id="letters">
+                @foreach (var letter in letters)
+                {
+                    <li class="@(GuessedLetters.Contains(letter) ? "guessed" : "")">
+                        <a @onclick="@(e => Guess(letter))">@letter</a>
+                    </li>
+                }
+            </ul>
+        }
+
+        @*Show error messages, but only when the word hasn't been guessed yet *@
+        @if (!WordGuessed && Notification != null)
+        {
+            <p>@Notification</p>
+        }
+
+        @if (WordGuessed)
+        {
+            <div class="box good">
+                <div class="content">
+                    <p id="word-guessed">Je hebt het woord geraden! Goed bezig!</p>
+                </div>
+            </div>
+        }
+
+        @if (!WordGuessed && NrOfIncorrectGuesses == MaxNrOfGuesses)
+        {
+            <div class="box bad">
+                <div class="content">
+                    <p id="word-not-guessed">Helaas, volgende keer beter...</p>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
