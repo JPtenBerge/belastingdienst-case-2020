@@ -31,3 +31,7 @@ Gebruik een database om de data van het garage-administratiesysteem in op te sla
   * Queries die te veel data ophalen met onnodige joins of onnodig veel kolommen in de resultset
   * Filteren/groeperen wat per ongeluk in .NET Core wordt gedaan in plaats van de database
 * Zorg ervoor dat de database niet betrokken is bij het uitvoeren van de unittests.
+
+Tijd over?
+
+De applicatie zou gebruiksvriendelijk moeten zijn. Voor het scherm van us01 wil ik bijv. alles op eén scherm kunnen invoeren. Het zou niet over meerdere CRUD-schermen verdeeld moeten zijn.
