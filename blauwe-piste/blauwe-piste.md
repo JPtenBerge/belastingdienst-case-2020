@@ -28,3 +28,7 @@ Tijd over?
   * Navigation properties die per ongeluk niet geïnclude zijn, waardoor er per entity een query wordt uitgevoerd
   * Queries die te veel data ophalen met onnodige joins of onnodig veel kolommen in de resultset
   * Filteren/groeperen wat per ongeluk in .NET Core wordt gedaan in plaats van de database
+
+Heel veel tijd over?
+
+* Maak een pagina waarbij men zoveel mogelijk woorden moet raden in 2 minuten. Dit aantal telt als de all-time high score.
