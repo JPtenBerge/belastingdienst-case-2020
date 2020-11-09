@@ -19,8 +19,8 @@ Gebruik een database om high scores en statistieken van het spel op te slaan.
 * Hou de volgende statistieken bij over de laatste 10 gespeelde potjes:
   * Hoeveel foute letters worden er gegokt
   * Hoelang men erover doet om een woord te raden
-* Maak een pagina waarbij men zoveel mogelijk woorden moet raden in 2 minuten. Dit aantal telt als de all-time high score.
-* Maak een pagina waarop de top 10 high scores zichtbaar zijn.
+* Maak een pagina waarop te zien is welke speler het meeste aantal woorden goed heeft geraden en wie de beste ratio heeft (geraden vs niet geraden)
+* Haal het te raden woord middels een stored procedure op uit de database. Gebruik ook hier EF Core.
 
 Tijd over?
 
