@@ -17,40 +17,13 @@ namespace Hangman.Tests
 		StatisticsController sut;
 		Mock<IGameRepository> gameRepositoryMock;
 		Mock<IPlayerRepository> playerRepositoryMock;
-		Mock<IWordRepository> wordRepositoryMock;
-		GameConfig gameConfig;
-		PlayerModel player;
-		WordModel word;
-		GameModel gameMock;
 
 		[TestInitialize]
 		public void Init()
 		{
-			gameConfig = new GameConfig();
-			word = new WordModel { Id = 8, Word = "superb" };
-			player = new PlayerModel { Id = 4, Name = "Frank", Games = new List<GameModel>() };
-			gameMock = new GameModel
-			{
-				Id = 16,
-				WordGuessed = false,
-				StartTime = DateTime.Now.AddDays(-5),
-				GuessedLetters = new List<GuessedLetterModel>(),
-				NrOfIncorrectGuesses = 0,
-				Player = player,
-				PlayerId = player.Id,
-				WordToGuess = word,
-				WordToGuessId = word.Id
-			};
-
 			playerRepositoryMock = new Mock<IPlayerRepository>();
-			playerRepositoryMock.Setup(x => x.GetOrCreatePlayerByName(It.IsAny<string>())).Returns(player);
-
-			wordRepositoryMock = new Mock<IWordRepository>();
-			wordRepositoryMock.Setup(x => x.GetRandomWord()).Returns(word);
 
 			gameRepositoryMock = new Mock<IGameRepository>();
-			gameRepositoryMock.Setup(x => x.Add(It.IsAny<GameModel>()));
-			gameRepositoryMock.Setup(x => x.Get(It.IsAny<int>())).Returns(gameMock);
 			gameRepositoryMock.Setup(x => x.QueryLast(It.IsAny<int>())).Returns(new List<GameModel>
 			{
 				new GameModel { NrOfIncorrectGuesses = 3, WordGuessed = false, StartTime = new DateTime(2018, 7, 15, 15, 14, 40), EndTime = null },
@@ -71,7 +44,6 @@ namespace Hangman.Tests
 			var result = sut.LastGames() as ViewResult;
 			var model = result.Model as StatisticsModel;
 			Assert.AreEqual(4754000.0, model.AverageTimeToSolve);
-
 		}
 
 		[TestMethod]
