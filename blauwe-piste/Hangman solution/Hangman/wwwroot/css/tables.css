@@ -1,0 +1,15 @@
+﻿
+
+thead {
+	background: lightgray;
+}
+td, th {
+	padding: 7px;
+}
+th {
+	font-weight: bold;
+	text-align: center;
+}
+tr:nth-child(even) {
+	background: lightgoldenrodyellow;
+}

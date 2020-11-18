@@ -4,10 +4,26 @@
 	<title>Galgje</title>
 	<link rel="stylesheet" href="~/css/reset.css">
 	<link rel="stylesheet" href="~/css/animated-border.css">
+	<link rel="stylesheet" href="~/css/tables.css">
 	<link rel="stylesheet" href="~/css/hangman.css">
+	<link rel="stylesheet" href="~/css/layout.css">
 	<link rel="stylesheet" href="~/css/game.css">
 </head>
 <body>
+
+	<header>
+		<h1>Galgje</h1>
+
+		<nav>
+			<ol>
+				<li><a href="/game">Welkom</a></li>
+				<li><a href="/game/new-game">Nieuw spel</a></li>
+				<li><a href="/statistics/last-games">Laatste 10 potjes</a></li>
+				<li><a href="/statistics/players">Spelerscores</a></li>
+			</ol>
+		</nav>
+	</header>
+	
 
 	@RenderBody()
 

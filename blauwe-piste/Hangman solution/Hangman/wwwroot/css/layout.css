@@ -1,0 +1,50 @@
+﻿body {
+	font-family: sans-serif;
+}
+
+header {
+	background: lightblue;
+	padding: 7px;
+	display: flex;
+	justify-content: space-between;
+	box-shadow: 0 0 15px 5px black;
+	margin-bottom: 20px;
+}
+
+nav {
+	
+}
+nav ol {
+	display: flex;
+}
+nav a {
+	padding: 7px;
+	display: block;
+	
+}
+
+h1 {
+	font-family: 'Lucida Sans', sans-serif;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+h2 {
+	font-family: 'Lucida Sans', sans-serif;
+	font-weight: bold;
+	font-size: 1.4rem;
+	margin-bottom: 18px;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+dt {
+	font-weight: bold;
+	margin-top: 16px;
+}
+dt, dd {
+	padding: 7px;
+}

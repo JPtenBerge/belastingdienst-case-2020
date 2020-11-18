@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PlayerStatisticsModel>
+@inject GameConfig GameConfig
+
+<article>
+	<h2>Spelerstatistieken</h2>
+
+	@if (Model == null || Model.Count() == 0)
+	{
+		<p>Niemand heeft nog een potje gespeeld!</p>
+	}
+	else
+	{
+		<table>
+			<thead>
+				<tr>
+					<th>Speler</th>
+					<th># goed geraden</th>
+					<th>Ratio</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var stat in Model)
+				{
+					<tr>
+						<td>@stat.Player.Name</td>
+						<td>@stat.NrOfSolvedGames</td>
+						<td>@Math.Round(stat.WinPercentage, 2)% winst, @Math.Round(100 - stat.WinPercentage, 2)% verlies</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+</article>

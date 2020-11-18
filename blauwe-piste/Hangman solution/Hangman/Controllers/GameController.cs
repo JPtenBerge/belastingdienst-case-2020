@@ -7,41 +7,68 @@ using Hangman.Models;
 using Microsoft.AspNetCore.Mvc;
 using Hangman.Utils;
 using Hangman.Services;
+using Hangman.Repositories;
 
 namespace Hangman.Controllers
 {
 	public class GameController : Controller
 	{
-		// normally, the game state would be stored in a database of some sort
-		public static HangmanGameModel model;
+		public GameModel CurrentGame { get; set; }
 
-		// dependency injected dictionary service
-		private IGameDictionary gameDictionary;
-		
-		public GameController(IGameDictionary gameDictionary)
+		private readonly IGameRepository gameRepository;
+		private readonly IWordRepository wordRepository;
+		private readonly IPlayerRepository playerRepository;
+		private readonly GameConfig gameConfig;
+		public GameController(IGameRepository gameRepository, IWordRepository wordRepository, IPlayerRepository playerRepository, GameConfig gameConfig)
 		{
-			this.gameDictionary = gameDictionary;
+			this.gameRepository = gameRepository;
+			this.wordRepository = wordRepository;
+			this.playerRepository = playerRepository;
+			this.gameConfig = gameConfig;
 		}
 
 		public IActionResult Index()
 		{
-			// when someone visits the application for the first time, initialize a game
-			if (model == null)
-			{
-				Reset();
-			}
-			return DisplayGame();
+			return View();
 		}
 
-		public IActionResult Guess(string letter)
+		[Route("game/new-game")]
+		public IActionResult NewGame()
+		{
+			return View();
+		}
+
+		[Route("game/new-game")]
+		[HttpPost]
+		public IActionResult NewGame(string name)
+		{
+			var player = playerRepository.GetOrCreatePlayerByName(name);
+			var wordToGuess = wordRepository.GetRandomWord();
+			var newGame = new GameModel
+			{
+				WordToGuess = wordToGuess,
+				WordToGuessId = wordToGuess.Id,
+				StartTime = DateTime.Now,
+				Player = player,
+				PlayerId = player.Id
+			};
+			gameRepository.Add(newGame);
+			return RedirectToAction("Game", new { id = newGame.Id });
+		}
+
+
+		[Route("game/{id:int}")]
+		public IActionResult Game(int id)
+		{
+			CurrentGame = gameRepository.Get(id);
+			return View(CurrentGame);
+		}
+
+		[Route("game/{id:int}/guess")]
+		public IActionResult Guess(int id, string letter)
 		{
 			letter = letter.ToUpper();
-
-			// for when someone skips the index page
-			if (model == null)
-			{
-				return RedirectToAction("Index");
-			}
+			CurrentGame = gameRepository.Get(id);
 
 			// is it a valid guess? game still going, letter not guessed before?
 			var isValidGuessResult = IsValidGuess(letter);
@@ -51,43 +78,43 @@ namespace Hangman.Controllers
 			}
 
 			// if letter isn't in word, then increase the number of incorrect guesses
-			if (!model.WordToGuess.ToUpper().Contains(letter))
+			if (!CurrentGame.WordToGuess.Word.ToUpper().Contains(letter))
 			{
-				model.NrOfIncorrectGuesses++;
+				CurrentGame.NrOfIncorrectGuesses++;
 			}
 
-			model.GuessedLetters.Add(letter);
+			CurrentGame.GuessedLetters.Add(new GuessedLetterModel { Letter = letter });
 
 			// has the word been solved?
 			if (HasWordBeenGuessed())
 			{
-				model.WordGuessed = true;
+				CurrentGame.WordGuessed = true;
 			}
 
-			return DisplayGame();
-		}
+			// note end time if word has been guessed or if this was the final incorrect guess
+			if (HasWordBeenGuessed() ||
+				CurrentGame.NrOfIncorrectGuesses == gameConfig.MaxNrOfGuesses)
+			{
+				CurrentGame.EndTime = DateTime.Now;
+			}
 
-		public IActionResult Reset()
-		{
-			var word = gameDictionary.GetRandomWord();
-			model = new HangmanGameModel();
-			model.WordToGuess = word;
-			return RedirectToAction("Index");
+			gameRepository.Update(CurrentGame);
+			return DisplayGame();
 		}
 
 		private IActionResult DisplayGame()
 		{
-			return View("Index", model);
+			return View("Game", CurrentGame);
 		}
 
 		private IActionResult IsValidGuess(string letter)
 		{
-			if (model.NrOfIncorrectGuesses == model.MaxNrOfGuesses)
+			if (CurrentGame.NrOfIncorrectGuesses == gameConfig.MaxNrOfGuesses)
 			{
 				ModelState.AddModelError("game-over", "Helaas, je mag niet meer raden. Het spel zit erop!");
 				return DisplayGame();
 			}
-			if (model.GuessedLetters.Contains(letter))
+			if (CurrentGame.GuessedLetters.Select(x => x.Letter).Contains(letter))
 			{
 				ModelState.AddModelError("already-guessed", $"De letter {letter} heb je al geprobeerd, probeer een andere!");
 				return DisplayGame();
@@ -98,10 +125,10 @@ namespace Hangman.Controllers
 		private bool HasWordBeenGuessed()
 		{
 			// filter out spaces and uppercase it for comparison
-			var word = model.WordToGuess.Replace(" ", "").ToUpper();
+			var word = CurrentGame.WordToGuess.Word.Replace(" ", "").ToUpper();
 			foreach (var letter in word)
 			{
-				if (!model.GuessedLetters.Contains(letter.ToString()))
+				if (!CurrentGame.GuessedLetters.Select(x => x.Letter).Contains(letter.ToString()))
 				{
 					return false;
 				}

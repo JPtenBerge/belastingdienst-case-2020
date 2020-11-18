@@ -1,8 +1,12 @@
 using Hangman.Controllers;
+using Hangman.Models;
+using Hangman.Repositories;
 using Hangman.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
+using System.Collections.Generic;
 
 namespace Hangman.Tests
 {
@@ -10,114 +14,132 @@ namespace Hangman.Tests
 	public class GameControllerTests
 	{
 		GameController sut;
-		Mock<IGameDictionary> gameDictionaryMock;
+		Mock<IGameRepository> gameRepositoryMock;
+		Mock<IPlayerRepository> playerRepositoryMock;
+		Mock<IWordRepository> wordRepositoryMock;
+		GameConfig gameConfig;
+		PlayerModel player;
+		WordModel word;
+		GameModel gameMock;
 
 		[TestInitialize]
 		public void Init()
 		{
-			// Because of its simplicity, mocking away this dictionary doesn't do
-			// a whole lot at the moment. But suppose the dictionary was to make all
-			// kinds of database calls or network requests. Then mocking would prove
-			// much more valuable. Right now, it's a matter of principle: We want
-			// to isolate the controller for testing here.
-			gameDictionaryMock = new Mock<IGameDictionary>();
-			gameDictionaryMock.Setup(x => x.GetRandomWord()).Returns("superb");
+			gameConfig = new GameConfig();
+			word = new WordModel { Id = 8, Word = "superb" };
+			player = new PlayerModel { Id = 4, Name = "Frank", Games = new List<GameModel>() };
+			gameMock = new GameModel
+			{
+				Id = 16,
+				WordGuessed = false,
+				StartTime = DateTime.Now.AddDays(-5),
+				GuessedLetters = new List<GuessedLetterModel>(),
+				NrOfIncorrectGuesses = 0,
+				Player = player,
+				PlayerId = player.Id,
+				WordToGuess = word,
+				WordToGuessId = word.Id
+			};
 
-			sut = new GameController(gameDictionaryMock.Object);
-			sut.Reset();
+			playerRepositoryMock = new Mock<IPlayerRepository>();
+			playerRepositoryMock.Setup(x => x.GetOrCreatePlayerByName(It.IsAny<string>())).Returns(player);
+
+			wordRepositoryMock = new Mock<IWordRepository>();
+			wordRepositoryMock.Setup(x => x.GetRandomWord()).Returns(word);
+
+			gameRepositoryMock = new Mock<IGameRepository>();
+			gameRepositoryMock.Setup(x => x.Add(It.IsAny<GameModel>()));
+			gameRepositoryMock.Setup(x => x.Get(It.IsAny<int>())).Returns(gameMock);
+
+			sut = new GameController(gameRepositoryMock.Object, wordRepositoryMock.Object, playerRepositoryMock.Object, gameConfig);
 		}
 
 		[TestMethod]
-		public void IndexShouldInitializeTheGameIfNotStarted()
+		public void NewGameShouldInitializeANewGame()
 		{
-			GameController.model = null; // reset static field
-			var result = sut.Index();
-			Assert.IsNotNull(GameController.model);
-			Assert.IsNotNull(GameController.model.WordToGuess);
-			Assert.IsInstanceOfType(result, typeof(ViewResult));
-		}
+			var result = sut.NewGame("Frank");
 
-		[TestMethod]
-		public void IndexShouldNotReinitializeTheGameOnceStarted()
-		{
-			GameController.model.NrOfIncorrectGuesses = 3;
-			sut.Index();
-			Assert.AreEqual(3, GameController.model.NrOfIncorrectGuesses);
-		}
+			playerRepositoryMock.Verify(x => x.GetOrCreatePlayerByName(It.IsAny<string>()));
+			wordRepositoryMock.Verify(x => x.GetRandomWord());
+			gameRepositoryMock.Verify(x => x.Add(It.IsAny<GameModel>()));
 
-		[TestMethod]
-		public void GuessWithNoModelInitializationShouldRedirect()
-		{
-			GameController.model = null; // reset static field
-			var result = sut.Guess("A");
 			Assert.IsInstanceOfType(result, typeof(RedirectToActionResult));
+		}
+
+		[TestMethod]
+		public void GameShouldRetrieveGameById()
+		{
+			sut.Game(15);
+			gameRepositoryMock.Verify(x => x.Get(It.IsAny<int>()));
+		}
+
+		[TestMethod]
+		public void GuessWithFinalGuessShouldNoteTheEndTime()
+		{
+			gameMock.NrOfIncorrectGuesses = gameConfig.MaxNrOfGuesses - 1;
+			var result = sut.Guess(16, "A") as ViewResult;
+
+			Assert.IsNotNull(sut.CurrentGame.EndTime);
+			gameRepositoryMock.Verify(x => x.Update(It.IsAny<GameModel>()));
 		}
 
 		[TestMethod]
 		public void GuessWithMaxNrOfGuessedReachedShouldShowPageWithMessage()
 		{
-			GameController.model.NrOfIncorrectGuesses = GameController.model.MaxNrOfGuesses;
-			var result = sut.Guess("A");
-			var viewResult = result as ViewResult;
+			gameMock.NrOfIncorrectGuesses = gameConfig.MaxNrOfGuesses;
+			var result = sut.Guess(16, "A") as ViewResult;
 
-			Assert.IsInstanceOfType(result, typeof(ViewResult));
-			Assert.AreEqual(1, viewResult.ViewData.ModelState.Count);
+			Assert.AreEqual(1, result.ViewData.ModelState.Count);
+			gameRepositoryMock.Verify(x => x.Update(It.IsAny<GameModel>()), Times.Never());
 		}
 
 		[TestMethod]
 		public void GuessWithLowercaseLetterShouldMatchWithWord()
 		{
-			GameController.model.WordToGuess = "TEST now";
-			sut.Guess("e");
-			sut.Guess("W");
+			gameMock.WordToGuess.Word = "TEST now";
+			sut.Guess(404, "e");
+			sut.Guess(404, "W");
 
-			Assert.AreEqual(0, GameController.model.NrOfIncorrectGuesses);
-			Assert.AreEqual(2, GameController.model.GuessedLetters.Count);
+			Assert.AreEqual(0, sut.CurrentGame.NrOfIncorrectGuesses);
+			Assert.AreEqual(2, sut.CurrentGame.GuessedLetters.Count);
+			gameRepositoryMock.Verify(x => x.Update(It.IsAny<GameModel>()));
 		}
 
 		[TestMethod]
 		public void GuessWithAlreadyGuessedIncorrectLetterShouldNotCountAsIncorrectAndLetTheUserKnow()
 		{
-			GameController.model.WordToGuess = "T n";
-			sut.Guess("Q");
-			sut.Guess("Q");
+			gameMock.WordToGuess.Word = "T n";
+			sut.Guess(2832, "Q");
+			sut.Guess(2832, "Q");
 
-			Assert.AreEqual(1, GameController.model.NrOfIncorrectGuesses);
-			Assert.AreEqual(1, GameController.model.GuessedLetters.Count);
+			Assert.AreEqual(1, sut.CurrentGame.NrOfIncorrectGuesses);
+			Assert.AreEqual(1, sut.CurrentGame.GuessedLetters.Count);
+			gameRepositoryMock.Verify(x => x.Update(It.IsAny<GameModel>()));
 		}
 
 		[TestMethod]
 		public void GuessWithLastCorrectGuessShouldMarkWordAsGuessed()
 		{
-			GameController.model.WordToGuess = "Test";
-			sut.Guess("T");
-			sut.Guess("E");
-			sut.Guess("S");
+			gameMock.WordToGuess.Word = "Test";
+			sut.Guess(987, "T");
+			sut.Guess(987, "E");
+			sut.Guess(987, "S");
 
-			Assert.AreEqual(true, GameController.model.WordGuessed);
+			Assert.AreEqual(true, sut.CurrentGame.WordGuessed);
+			Assert.IsNotNull(sut.CurrentGame.EndTime);
+			gameRepositoryMock.Verify(x => x.Update(It.IsAny<GameModel>()));
 		}
 
 		[TestMethod]
 		public void GuessShouldIgnoreSpacesWhenTryingToGuessTheWord()
 		{
-			GameController.model.WordToGuess = "T N";
-			sut.Guess("T");
-			sut.Guess("N");
+			gameMock.WordToGuess.Word = "T n";
+			sut.Guess(55, "T");
+			sut.Guess(55, "N");
 
-			Assert.AreEqual(true, GameController.model.WordGuessed);
-		}
-
-		[TestMethod]
-		public void ResetShouldSetUpNewGame()
-		{
-			sut.Guess("A");
-			sut.Guess("B");
-			sut.Guess("C");
-
-			sut.Reset();
-
-			Assert.AreEqual(0, GameController.model.NrOfIncorrectGuesses);
-			Assert.AreEqual(0, GameController.model.GuessedLetters.Count);
+			Assert.AreEqual(true, sut.CurrentGame.WordGuessed);
+			Assert.IsNotNull(sut.CurrentGame.EndTime);
+			gameRepositoryMock.Verify(x => x.Update(It.IsAny<GameModel>()));
 		}
 	}
 }

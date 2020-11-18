@@ -1,0 +1,73 @@
+﻿@model StatisticsModel
+@inject GameConfig GameConfig
+
+<div class="flex">
+	<article>
+		<h2>Laatste 10 potjes</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Speler</th>
+					<th>Tijd</th>
+					<th># foute gokken</th>
+					<th>Geraden?</th>
+					<th>Acties</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model.Games == null || Model.Games.Count() == 0)
+				{
+					<tr>
+						<td colspan="5">Niemand heeft nog een potje gespeeld!</td>
+					</tr>
+				}
+				else
+				{
+
+					@foreach (var game in Model.Games)
+					{
+						<tr>
+							<td>@game.Player.Name</td>
+							@if (game.EndTime.HasValue)
+							{
+								<td>@Math.Round((game.EndTime.Value - game.StartTime).TotalMilliseconds / 1000, 3) seconden</td>
+							}
+							else
+							{
+								<td>Nog bezig</td>
+							}
+							<td>@game.NrOfIncorrectGuesses</td>
+							<td>@(game.WordGuessed ? "✅" : "❌")</td>
+							@if (!game.WordGuessed && game.NrOfIncorrectGuesses < GameConfig.MaxNrOfGuesses)
+							{
+								<td><a href="/game/@game.Id">Hervat</a></td>
+							}
+							else
+							{
+								<td></td>
+							}
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</article>
+	<article>
+		<h2>Statistieken van geraden potjes</h2>
+
+		@if (!Model.AverageTimeToSolve.HasValue)
+		{
+			<p>Niemand heeft nog een woord goed geraden!</p>
+		}
+		else
+		{
+			<dl>
+				<dt>Gemiddeld aantal verkeerde gokken:</dt>
+				<dd>@Model.AverageNumberOfWrongGuesses.Value</dd>
+				<dt>Gemiddelde tijd om op te lossen:</dt>
+				<dd>@Math.Round(Model.AverageTimeToSolve.Value / 1000, 3) seconden</dd>
+			</dl>
+		}
+	</article>
+</div>
