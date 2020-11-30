@@ -36,7 +36,7 @@ Tijd over?
 
 De applicatie zou gebruiksvriendelijk moeten zijn. Voor het scherm van us01 wil ik bijv. alles op eén scherm kunnen invoeren. Het zou niet over meerdere CRUD-schermen verdeeld moeten zijn.
 
-## Blok 3: Advanced Programming (5 dagen)
+## Blok 3: Advanced Programming
 
 * Gebruik voor I/O-operaties `async`/`await` waar dit zou moeten.
 * De RDW heeft open APIs om auto-informatie op te halen wanneer in je applicatie wanneer een kenteken wordt ingevuld. Roep deze APIs aan via een WCF-service.
