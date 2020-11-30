@@ -35,3 +35,18 @@ Gebruik een database om de data van het garage-administratiesysteem in op te sla
 Tijd over?
 
 De applicatie zou gebruiksvriendelijk moeten zijn. Voor het scherm van us01 wil ik bijv. alles op eén scherm kunnen invoeren. Het zou niet over meerdere CRUD-schermen verdeeld moeten zijn.
+
+## Blok 3: Advanced Programming (5 dagen)
+
+* Gebruik voor I/O-operaties `async`/`await` waar dit zou moeten.
+* De RDW heeft open APIs om auto-informatie op te halen wanneer in je applicatie wanneer een kenteken wordt ingevuld. Roep deze APIs aan via een WCF-service.
+  * Je krijgt heel wat data terug uit deze service, gebruik hun SoQL om de data te filteren.
+* Maak een WCF-service die fungeert als de kwaliteitssteekproef voor us03. auto klaar melden. Roep deze asynchroon aan vanaf de ASP.NET Core-webapplicatie en parse het resultaat. Stuur het kenteken mee wat gecontroleerd moet worden. De communicatie met de service loopt via XML. De response zou in ieder geval moeten bevatten:
+  * Of het voertuig is geselecteerd voor de kwaliteitssteekproef
+  * De datum waarop de auto uiterlijk is controleerd (altijd binnen een week)
+
+  Verdere eisen:
+  * De service hoort minimaal 50 concurrent requests aan te kunnen. Toets dit.
+  * Enkel geauthenticeerde services zouden gebruik mogen maken van deze WCF-service. Implementeer beveiliging met X509-certificaten.
+  * Implementeer logging en hou via performance counters bij hoeveel load de service te verduren krijgt.
+- Tijd over? Besteed wat aandacht aan het verder unittesten van je code, zowel deze opdracht als vorige(n).
