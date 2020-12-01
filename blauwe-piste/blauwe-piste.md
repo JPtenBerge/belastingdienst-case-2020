@@ -36,7 +36,7 @@ Heel veel tijd over?
 ## Blok 3: Advanced Programming
 
 * Gebruik voor I/O-operaties `async`/`await` waar dit zou moeten.
-* Maak een WCF-service die de lijst van woorden aanlevert in XML-formaat. Roep deze service asynchroon aan vanaf de webapplicatie en parse het resultaat.
+* Maak een WCF-service die een random woord teruggeeft in XML-formaat. Roep deze service asynchroon aan vanaf de webapplicatie en parse het resultaat.
   * Voor de woordenlijst, op internet kun je hele dictionaries vinden, bijv: http://www.albahari.com/ispell/allwords.txt
 
     Importeer deze data op asynchrone wijze in je database.
