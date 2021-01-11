@@ -43,3 +43,11 @@ Heel veel tijd over?
 * Implementeer een pay-to-play-model voor je applicatie via een WCF-service. Iedere unieke gebruiker mag 3 keer gratis spelen, daarna moet hij of 5 minuten wachten of betalen voor 3 nieuwe rondes.
   * Implementeer logging en hou via performance counters bij hoeveel load de service te verduren krijgt.
 - Tijd over? Besteed wat aandacht aan het verder unittesten van je code, zowel deze opdracht als vorige(n).
+
+## Blok 4: Crypto, Data en OS
+
+Sla alle persoonsgegevens versleuteld op in verband met privacywetgeving (GDPR), zoals de spelernaam en tijdstippen waarop een spel is gestart en beëindigd. Gebruik voor deze versleuteling X509-certificaten.
+
+Tijd over?
+* Ga verder met de opdracht van de WCF-services.
+* Verbeter je unittests met nieuw verkregen inzichten van de training.

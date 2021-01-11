@@ -50,3 +50,17 @@ De applicatie zou gebruiksvriendelijk moeten zijn. Voor het scherm van us01 wil 
   * Enkel geauthenticeerde services zouden gebruik mogen maken van deze WCF-service. Implementeer beveiliging met X509-certificaten.
   * Implementeer logging en hou via performance counters bij hoeveel load de service te verduren krijgt.
 - Tijd over? Besteed wat aandacht aan het verder unittesten van je code, zowel deze opdracht als vorige(n).
+
+## Blok 4: Crypto, Data en OS
+
+Sla alle persoonsgegevens versleuteld op in verband met privacywetgeving (GDPR), zoals:
+* NAW-gegevens
+* telefoonnummers en e-mailadressen
+* kenteken
+* eigenaar (indien het een persoon betreft)
+
+Gebruik voor deze versleuteling X509-certificaten.
+
+Tijd over?
+* Ga verder met de opdracht van de WCF-services.
+* Verbeter je unittests met nieuw verkregen inzichten van de training.
