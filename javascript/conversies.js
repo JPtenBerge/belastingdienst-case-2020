@@ -1,8 +1,9 @@
 /*
-best practices:
+JP's best practices:
 - === om te vergelijken
 - geen var-statement
 - fat arrow ipv functies
+- use strict
 */
 console.log(24 + "67");
 
