@@ -24,6 +24,8 @@ console.log(myObj);
 
 // Object.keys(myObj).length
 
+// why a map instead of native JS objects: a map can use full objects as keys, native objects can't.
+
 let dict = new Map();
 dict.set("qwerty", "value");
 dict.set("123456", { x: 24 });
