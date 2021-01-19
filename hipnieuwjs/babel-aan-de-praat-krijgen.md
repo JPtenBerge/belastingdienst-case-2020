@@ -9,7 +9,7 @@
 4. Installeer babel dependencies
    ```sh
    npm install @babel/cli @babel/core @babel/preset-env
-   ```sh
+   ```
 5. Maak babel configuratiebestand aan: babel.config.json
    ```json
    {
