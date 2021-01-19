@@ -1,5 +1,9 @@
 'use strict';
 
+let lambda = (id, name, city) => {
+    console.log('name:', name);
+};
+
 let nameqqq = 'JP';
 let suffix = 'dinges';
 

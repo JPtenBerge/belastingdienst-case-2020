@@ -30,6 +30,8 @@ var customer = {
         let splits = value.split(' ');
         this.firstName = splits[0];
         this.surname = splits[1];
+
+        // let [ firstName, surname ] = value.split(' ');
     }
 };
 
