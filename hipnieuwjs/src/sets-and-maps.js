@@ -36,7 +36,6 @@ dict.set("key", ["val1", "val2"]);
 console.log(dict.has("123456"));
 console.log(dict.size);
 
-
 // garbage collection
 
 // deze houden geen referentie vast naar objecten als er niemand anders naar wijst
