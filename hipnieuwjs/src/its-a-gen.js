@@ -48,8 +48,6 @@ console.log(itje.next());
 
 function* gen() {
     let currentValue = 4;
-    yield* gen();
-
 
     yield currentValue;
     console.log('en nu naar de volgende');
