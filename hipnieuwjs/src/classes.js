@@ -1,3 +1,11 @@
+
+
+class Ding {
+    constructor() {
+        console.log('q');   
+    }
+}
+
 class Customer {
   name; // experimental
   static nrOfCustomers = 0;
