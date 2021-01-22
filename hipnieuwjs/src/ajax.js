@@ -20,3 +20,9 @@ function getData() {
         console.log('data:', data);
     });
 }
+
+
+function fetchAll(urls) {
+    let fetches = urls.map(url => fetch(url));
+    return Promise.all(fetches);
+}
