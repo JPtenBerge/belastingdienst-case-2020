@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Beste webapp aller tijden</title>
+</head>
+
+<body>
+
+	<!-- HTML4 -->
+	<!-- een div en een span zijn een betekenisloos element -->
+
+	<!-- HTML: structuur/inhoud -->
+	<!-- CSS: opmaak -->
+	<!-- JS: gedrag/interactie -->
+
+
+	<header>
+		Logo met slogan
+	</header>
+
+	<nav>
+		<ol>
+			<li><a href="#start">Start</a></li>
+			<li><a href="#portfolio">Portfolio</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ol>
+	</nav>
+
+	<article>
+		<h1>Embedded content</h1>
+		<video controls>
+			<source src="media/video1.webm">
+			<source src="media/video1.ogv">
+			<source src="media/video1.mp4">
+		</video>
+
+		<canvas width="600" height="400" id="cvs"></canvas>
+		<script>
+			let ctx = document.querySelector('#cvs').getContext('2d');
+			ctx.fillRect(50, 50, 200, 100);
+		</script>
+
+		<!-- carousel -->
+	</article>
+
+
+
+	<main>
+		<!-- <h1>Content</h1>
+
+		<meter min="0" max="10" optimum="10" low="5" high="8" value="1"></meter> <!-- rapportcijfertjes -->
+		<progress min="0" max="100" value="70"></progress> -->
+
+		<!-- oude invoer:
+		<input type="text">
+		<input type="button">
+		<input type="image">
+		<input type="submit">
+		<input type="checkbox">
+		<input type="password">
+		<input type="radio">
+		<textarea>
+		<select> -->
+
+		<!-- <form onsubmit="addIets(); return false;">
+
+				<div id="container">container hier</div>
+
+				<input type="text" id="input-iets">
+
+				<button>Add ergens</button>
+
+				<script>
+
+					function addIets() {
+						let iets = document.querySelector('#input-iets').value;
+						// niet ideale lompe manier
+						document.querySelector('#container').innerHTML += iets;
+					}
+				</script>
+			</form> -->
+
+
+		<!-- <form> -->
+		<!-- Form Validation API? -->
+
+		<!-- email: <input type="email" pattern="^[a-zA-Z0-9'=-]+@[a-zA-Z0-9-]+\.nl$"
+				   title="Alleen Nederlanders graag"><br>
+			tel: <input type="tel"><br>
+			list: <input type="text"><br>
+			email: <input type="url"><br>
+			number: <input type="number"><br>
+			month: <input type="month"><br>
+			date: <input type="date"><br>
+			time: <input type="time"><br>
+			datetime-local: <input type="datetime-local"><br>
+			week: <input type="week"><br>
+			range: <input type="range"><br>
+			color: <input type="color"><br>
+
+			<button>Submit</button>
+		</form> -->
+	</main>
+
+
+
+	<!-- <section>
+		<article>
+			<h1>Content</h1>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum voluptatem eius id ea omnis itaque.</p>
+			<p>Perspiciatis velit, adipisci autem ipsam, ad eum soluta dignissimos maiores, non quas reiciendis nihil minus.</p>
+			<p>Nesciunt suscipit cum odit assumenda voluptatum quia rem quis fugiat delectus! Nemo quas est facilis.</p>
+			<p>Fugit quaerat molestias praesentium magni illo aspernatur, nisi, eaque ratione, dicta itaque aliquid id. Suscipit.</p>
+		</article>
+
+		<article>
+			<h1>Content</h1>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum voluptatem eius id ea omnis itaque.</p>
+			<p>Perspiciatis velit, adipisci autem ipsam, ad eum soluta dignissimos maiores, non quas reiciendis nihil minus.</p>
+			<p>Nesciunt suscipit cum odit assumenda voluptatum quia rem quis fugiat delectus! Nemo quas est facilis.</p>
+			<p>Fugit quaerat molestias praesentium magni illo aspernatur, nisi, eaque ratione, dicta itaque aliquid id. Suscipit.</p>
+		</article>
+	</section> -->
+
+	<aside>
+		verwante info &amp; advertenties
+	</aside>
+
+	<footer>
+		&copy; JP 2k21 | Disclaimer | Privacygeneuzel
+	</footer>
+
+</body>
+
+</html>
