@@ -1,0 +1,72 @@
+
+
+#blokjes {
+	display: grid;
+	grid-template-rows: 60px 120px 100px;
+	grid-template-columns: 50px 150px 1fr;
+}
+
+.eerste {
+	background: lightblue;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+.tweede {
+	background: rgba(50, 50, 50, 0.5);
+	grid-row: 1;
+	grid-column: 2;
+}
+.derde {
+	background: lightgreen;
+	grid-row: 1;
+	grid-column: 3;
+}
+.vierde {
+	background: lightgoldenrodyellow;
+	grid-row: 3;
+	grid-column: 1;
+}
+.vijfde {
+	background: lightpink;
+	grid-row: 3;
+	grid-column: 2;
+}
+.zesde {
+	background: lightsalmon;
+	grid-row: 3;
+	grid-column: 3;
+}
+
+html, body {
+	height: 100%;
+}
+body {
+	
+	display: grid;
+	grid-template-areas: 'header header header'
+						 'nav content ads'
+						 'footer footer footer';
+}
+
+header {
+	background: lightcoral;
+	grid-area: header;
+}
+nav {
+	background: lightgreen;
+	grid-area: nav;
+}
+section {
+	background: lightblue;
+	grid-area: content;
+}
+aside {
+	background: red;
+	grid-area: ads;
+}
+footer {
+	background: purple;
+	grid-area: footer;
+}
