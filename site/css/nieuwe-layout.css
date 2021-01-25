@@ -1,0 +1,40 @@
+
+/* flexible boxes */
+/* parent element als flex container */
+
+
+#blokjes {
+	background: blue;
+	padding: 7px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: flex-end;
+	height: 300px;
+}
+#blokjes div {
+	background: lightblue;
+	margin: 5px;
+	padding: 20px;
+}
+
+#layout {
+	display: flex;
+}
+
+nav {
+	background: lightpink;
+	width: 150px;
+}
+main {
+	background: lightgoldenrodyellow;
+	flex: 2;
+}
+main.special {
+	background: lightblue;
+	flex: 1;
+}
+aside {
+	background: lightgreen;
+	width: 150px;
+}

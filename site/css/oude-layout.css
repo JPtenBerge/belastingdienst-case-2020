@@ -1,0 +1,32 @@
+
+
+#blokjes {
+	background: blue;
+	padding: 7px;
+}
+#blokjes div {
+	background: lightblue;
+	margin: 5px;
+	padding: 20px;
+	float: left; /* omdat het stom is */
+}
+#blokjes > br {
+	clear: left;
+}
+
+nav {
+	background: lightpink;
+	float: left;
+	width: 150px;
+	height: 200px;
+}
+main {
+	background: lightgoldenrodyellow;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+aside {
+	background: lightgreen;
+	width: 150px;
+	float: right;
+}
