@@ -34,14 +34,22 @@ In this exercise you will create a web page that will allow the user to see a li
 	</html>
 	```
 1. Within `<body>`, add a few content elements:
-
    * a heading element showing `MyTrips`.
 		```html
 		<h1>MyTrips</h1>
 		```
-   * a `section` that holds `article`s which in turn hold the details of the trip. Use semantic elements there as well, like `meter` and `time`.
+   * a `nav` element that holds all the navigation elements.
 		```html
-		<section>
+		<nav>
+			<ol>
+				<li><a href="index.html">Trips</a></li>
+				...
+			</ol>
+		</nav>
+		```
+   * a `section` that holds `article`s which in turn hold the details of the trip. Use semantic elements there as well, like `meter` and `time`. We're adding the `id` and `class` attribute for styling in the next exercise.
+		```html
+		<section id="trips">
 			<article class="trip">
 				<header>
 					<h2 class="city">Rome</h2>
