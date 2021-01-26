@@ -3,12 +3,109 @@
 
 <head>
 	<title>Document</title>
+	<link rel="stylesheet" href="css/default.css">
 </head>
 
 <body>
 
 	<article>
-		<h1></h1>
+		<style>
+			#chat-messages {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+		</style>
+
+		<h1>Web Sockets</h1>
+
+		<form onsubmit="say(); return false;">
+			<input id="input-name">
+			<input id="input-content">
+			<button>Zeg!</button>
+		</form>
+
+		<ol id="chat-messages"></ol>
+
+		<script>
+			let socket = new WebSocket('ws://localhost:3000/chat');
+			socket.addEventListener('open', () => console.log('verbinding open!'));
+			socket.addEventListener('close', () => console.log('verbinding gesloten!'));
+			socket.addEventListener('message', event => {
+				let message = JSON.parse(event.data);
+
+
+				// nogal lomp EN TRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG
+				document.querySelector('#chat-messages').innerHTML += `<li>
+					<strong>${message.name}</strong>:
+					${message.content}
+				</li>`;
+			});
+
+			function say() {
+				let message = {
+					name: document.querySelector('#input-name').value,
+					content: document.querySelector('#input-content').value,
+				};
+				socket.send(JSON.stringify(message));
+			}
+		</script>
+
+
+	</article>
+
+
+	<article>
+		<h1>Web Worker</h1>
+
+		<input id="input-fibo" type="number">
+		<button onclick="berekenFibo();">Bereken!</button>
+		<span id="fibo-result">resultaat hier</span>
+
+		<script>
+			function berekenFibo() {
+				let getal = document.querySelector('#input-fibo').value;
+
+				document.querySelector('#fibo-result').innerText = 'Bezig met berekenen!';
+
+				let worker = new Worker('scripts/fibo-worker.js');
+				worker.addEventListener('message', event => {
+					document.querySelector('#fibo-result').innerText = event.data;
+				});
+				worker.postMessage(getal);
+			}
+		</script>
+
+		<!-- fibonacci
+
+		1 1 2 3 5 8 13 21 34 55 -->
+
+	</article>
+
+	<article>
+		<h1>Geolocation</h1>
+
+		Latitude: <span id="latitude">(nog niet gezet)</span><br>
+		Longitude: <span id="longitude">(nog niet gezet)</span><br>
+		Accuracy: <span id="accuracy">(nog niet gezet)</span>
+
+		<button onclick="getLocation();">Get location</button>
+
+		<script>
+			function getLocation() {
+				navigator.geolocation.getCurrentPosition(
+					pos => {
+						document.querySelector('#latitude').innerText = pos.coords.latitude;
+						document.querySelector('#longitude').innerText = pos.coords.longitude;
+						document.querySelector('#accuracy').innerText = pos.coords.accuracy;
+					},
+					err => {
+						console.error('Oh nee!', err);
+					}
+				);
+				// navigator.geolocation.watchPosition() // stalkmodus
+			}
+		</script>
+
 	</article>
 
 	<article>
@@ -21,7 +118,7 @@
 
 		<script>
 			// geocities.com/username
-			
+
 			// gescheiden per browser en per hostname
 			// supercookie: ~10MB
 			// session storage gaat weg zodra tabblad gesloten wordt
@@ -42,6 +139,9 @@
 			document.querySelector('#session-counter').innerText = sessionStorage.mijnCounter;
 		</script>
 	</article>
+
+	<blink>hoi hier wat tekst</blink>
+
 
 </body>
 
