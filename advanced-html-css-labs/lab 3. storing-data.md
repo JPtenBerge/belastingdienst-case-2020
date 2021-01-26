@@ -76,7 +76,7 @@ function loadTrips() {
 	```js
 	for (let trip of trips) {
 		let newTrip = template.cloneNode(true); // true = deep clone
-		newTrip.querySelector('.where').innerText = trip.where;
+		newTrip.querySelector('.where').innerText = trip.location;
 		// ...
 		document.querySelector('#trips').appendChild(newTrip);
 	}
