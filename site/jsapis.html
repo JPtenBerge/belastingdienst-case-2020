@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+
+	<article>
+		<h1></h1>
+	</article>
+
+	<article>
+		<h1>Web Storage</h1>
+
+		Local Storage: <span id="local-counter">(nog niet gezet)</span><br>
+		Session Storage: <span id="session-counter">(nog niet gezet)</span>
+
+		JWT: JSON Web Token???
+
+		<script>
+			// geocities.com/username
+			
+			// gescheiden per browser en per hostname
+			// supercookie: ~10MB
+			// session storage gaat weg zodra tabblad gesloten wordt
+			// local storage enkel als de browser verwijderd wordt of als de geschiedenis gewist wordt
+			// dit valt overigens ook onder de cookiewetgeving.
+			// alleen maar strings: gebruik JSON.stringify/parse
+
+			if (!localStorage.mijnCounter) {
+				localStorage.mijnCounter = 0;
+			}
+			localStorage.mijnCounter++;
+			document.querySelector('#local-counter').innerText = localStorage.mijnCounter;
+
+			if (!sessionStorage.mijnCounter) {
+				sessionStorage.mijnCounter = 0;
+			}
+			sessionStorage.mijnCounter++;
+			document.querySelector('#session-counter').innerText = sessionStorage.mijnCounter;
+		</script>
+	</article>
+
+</body>
+
+</html>
