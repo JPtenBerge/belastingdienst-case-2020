@@ -1,0 +1,9 @@
+
+
+body {
+    font-size: 0.6em; /* dit vinden veel slechtziende mensen zeer irritant */
+}
+
+li {
+    font-size: 0.6rem; /* root em */
+}

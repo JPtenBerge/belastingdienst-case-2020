@@ -1,0 +1,39 @@
+@mixin specialcasing {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-variant: small-caps;
+}
+
+// Less PostCSS Stylus
+
+/* syntactically awesome stylesheets */
+
+// syntax van CSS
+
+// preprocessor    SCSS (jij) => compileert => CSS (browser)
+
+// variabelen
+$base-color1: #75c3f2;
+$base-fontsize: 1.2em;
+
+nav a {
+    background: $base-color1;
+    @include specialcasing;
+
+    font-size: $base-fontsize * 1.4;
+
+    // nested styles
+    &:hover {
+        background: darken($base-color1, 30%);
+    }
+}
+
+p:first-letter {
+    @include specialcasing;
+}
+
+
+@for $var from 1 to 12 {
+    .col-lg-#{$var} {
+        margin-left: 20px * $var;
+    }
+}

@@ -9,6 +9,46 @@
 <body>
 
 	<article>
+		<h1>Drag &#039;n drop</h1>
+
+		<!-- <input type="file"> -->
+
+		<div id="droparea">drop uw files hier</div>
+
+		<ul id="images-to-upload"></ul>
+
+		<script>
+			document.querySelector('#droparea').addEventListener('dragover', event => {
+				event.preventDefault(); // voorkom dat browser het bestand opent
+				event.stopPropagation(); // andere elementen: afblijven van dit event
+			});
+			document.querySelector('#droparea').addEventListener('drop', event => {
+				event.preventDefault(); // voorkom dat browser het bestand opent
+				event.stopPropagation(); // andere elementen: afblijven van dit event
+
+				for (let file of event.dataTransfer.files) {
+					console.log(`${file.name} is ${file.size} bytes groot en is van het type ${file.type}`);
+
+					// AJAX
+					let reader = new FileReader();
+					reader.addEventListener('loadend', e => {
+						// fetch({
+						// 	method: 'POST',
+						// 	url: 'api/upload',
+						// 	body: e.target.result
+						// });
+
+						document.querySelector('#images-to-upload').innerHTML += `<li>
+							<img src="${e.target.result}">
+						</li>`;
+					});
+					reader.readAsDataURL(file);
+				}
+			});
+		</script>
+	</article>
+
+	<article>
 		<style>
 			#chat-messages {
 				display: flex;
