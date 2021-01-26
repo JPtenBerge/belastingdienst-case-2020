@@ -11,10 +11,16 @@ https://openlayers.org/en/latest/doc/quickstart.html
 1. In `index.html`, just above the footer, add a `<div>` element for the map to load in:
     ```html
     <hr>
-    <div id="map" style="height: 300px;"></div>
+    <div id="map"></div>
 
     <footer>Waldo &copy; 2020</footer>
     ```
+1. In your CSS file, give the map some height:
+	```css
+	#map {
+		height: 300px;
+	}
+	```
 1. Include Open Street Map's CSS and JavaScript in `index.html`:
     ```html
     <head>
