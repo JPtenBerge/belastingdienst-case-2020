@@ -22,7 +22,9 @@
 ```sh
 - npm install --save-dev eslint
 - npx eslint --init  => airbnb, google, standard
-- npx eslint
+- npx eslint src/bestand.ts
 ```
+
+En installeer ook vooral de extensie ESLint voor VS Code.
 
 Uitwerking van de bankoefening staat ook in de Pragmatic JavaScript-folder.
