@@ -20,6 +20,9 @@
 		"import/extensions": "off",
 		"import/no-unresolved": "off",
 		"prefer-const": "off",
-		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+		"import/no-extraneous-dependencies": [
+			"error",
+			{ "devDependencies": ["**/*.spec.ts"] }
+		]
 	}
 }
