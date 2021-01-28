@@ -1,6 +1,7 @@
 Maak een Bank-applicatie.
 
 - Bank beheert BankAccounts.
+- Er zijn verschillende soorten accounts: Checking en Savings.
 - Ik wil geld kunnen overmaken van account A naar B.
 - Bij een account wil ik een accountant kunnen koppelen. Als er een hoge afschrijving wordt gedaan, dan moet deze accountant op de hoogte worden gebracht.
 - Dit alles met TypeScript
