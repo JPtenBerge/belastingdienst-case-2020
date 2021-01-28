@@ -1,4 +1,6 @@
-Maak een Bank-applicatie.
+# Pragmatic JavaScript-oefeningen
+
+## Oefening 1: maak een Bank-applicatie.
 
 - Bank beheert BankAccounts.
 - Er zijn verschillende soorten accounts: Checking en Savings.
@@ -12,3 +14,15 @@ Maak een Bank-applicatie.
 3. Configureer je tsconfig verder af
 4. npx tsc
 ```
+
+---
+
+## Oefening 2: integreer ESLint bij jullie Bankapplicatie
+
+```sh
+- npm install --save-dev eslint
+- npx eslint --init  => airbnb, google, standard
+- npx eslint
+```
+
+Uitwerking van de bankoefening staat ook in de Pragmatic JavaScript-folder.
