@@ -28,3 +28,27 @@
 En installeer ook vooral de extensie ESLint voor VS Code.
 
 Uitwerking van de bankoefening staat ook in de Pragmatic JavaScript-folder.
+
+## Oefening 3: unittest jullie bankapplicatie:
+
+- Of het transferren van money "correct" gaat
+- Of je een foutmeldingen krijgt als je bij een SavingsAccount te veel geld over probeert te maken
+
+Gebruik gerust mocha/chai/sinon:
+```sh
+npm install ts-mocha mocha chai sinon @types/mocha @types/chai @types/sinon --save-dev
+```
+en in je package.json:
+```json
+"scripts": {
+  "test": "ts-mocha --paths -p ./tsconfig.json test/**/*.spec.ts"
+},
+```
+Uit te voeren met:
+```sh
+npm test
+```
+
+Maar voel je vrij om andere combinaties erbij te pakken:
+- karma/jasmine (krijgen jullie ook nog bij Angular)
+- jest
