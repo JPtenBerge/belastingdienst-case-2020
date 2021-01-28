@@ -14,3 +14,6 @@ advanced-html-css/sockserver/node_modules
 pragmatic-javascript/tstestjes/node_modules
 pragmatic-javascript/tstestjes/dist
 pragmatic-javascript/typescriptoefeningbank/dist
+**/.nyc_output
+**/coverage
+**/reports

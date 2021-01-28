@@ -1,4 +1,4 @@
-import { Pump } from './pump';
+import { Pump } from 'src/pump';
 
 export class Reactor {
 	static MAXIMUM_TEMPERATURE = 250;
