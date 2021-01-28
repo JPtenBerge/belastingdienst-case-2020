@@ -1,4 +1,3 @@
-
 // hip nieuw JS => ES5
 // let x: number = 14;
 // let text: string = 'hoi';
@@ -8,7 +7,6 @@
 //     return 18;
 // }
 // telop(42, 99);
-
 
 // let fatarrow = () => {
 //     console.log(this);
@@ -29,15 +27,15 @@
 //     }
 // }
 
-interface Test { // alleen tijdens development
-    bla(): number;
+interface Test {
+  // alleen tijdens development
+  bla(): number;
 }
 class Ding implements Test {
-    bla() {
-        return 18;
-    }
+  static bla() {
+    return 18;
+  }
 }
-
 
 // function bla() {
 //     yield 4;
