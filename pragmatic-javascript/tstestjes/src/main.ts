@@ -1,22 +1,20 @@
-import { HydraulicPump } from "./pumps/hydraulic-pump";
-import { PneumaticPump } from "./pumps/pneumatic-pump";
-import { Reactor } from "./reactor";
-import { sleep } from './sleep';
+import { HydraulicPump } from 'src/pumps/hydraulic-pump'; // relatieve paden
+import { PneumaticPump } from 'src/pumps/pneumatic-pump';
+import { Reactor } from 'src/reactor';
+import { sleep } from 'src/sleep';
 
 async function main() {
-  let chernobyl = new Reactor();
-  chernobyl.pumps.push(new HydraulicPump());
-  chernobyl.pumps.push(new PneumaticPump());
+	const chernobyl = new Reactor();
+	chernobyl.pumps.push(new HydraulicPump());
+	chernobyl.pumps.push(new PneumaticPump());
 
-  while (true) {
-    chernobyl.split();
-    await sleep(500);
-  }
+	while (true) {
+		chernobyl.split();
+		await sleep(500);
+	}
 }
 
 // IIAFE
 (async () => {
-  await main();
+	await main();
 })();
-
-

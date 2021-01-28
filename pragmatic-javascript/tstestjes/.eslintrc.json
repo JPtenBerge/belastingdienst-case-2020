@@ -22,6 +22,7 @@
         "no-tabs": ["off"],
         "indent": ["error", "tab"],
         "import/extensions": "off",
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        "prefer-const": "off"
     }
 }
