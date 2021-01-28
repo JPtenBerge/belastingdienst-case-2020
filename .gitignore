@@ -7,9 +7,10 @@ oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor/obj
 oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor/bin
 oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/obj
 oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/bin
-javascript-taal/hipnieuwjs/node_modules
+**/node_modules
 javascript-taal/hipnieuwjs/dist
 javascript-taal/hipnieuwjs/.cache
 advanced-html-css/sockserver/node_modules
 pragmatic-javascript/tstestjes/node_modules
 pragmatic-javascript/tstestjes/dist
+pragmatic-javascript/typescriptoefeningbank/dist
