@@ -1,15 +1,15 @@
-blauwe-piste/Hangman solution/Hangman/obj
-blauwe-piste/Hangman solution/Hangman/bin
-blauwe-piste/Hangman solution/Hangman.Tests/obj
-blauwe-piste/Hangman solution/Hangman.Tests/bin
-.vs
-blauwe-piste/Hangman blazor solution/HangmanBlazor/obj
-blauwe-piste/Hangman blazor solution/HangmanBlazor/bin
-blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/obj
-blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/bin
-hipnieuwjs/node_modules
-hipnieuwjs/dist
-hipnieuwjs/.cache
-sockserver/node_modules
-tstestjes/node_modules
-tstestjes/dist
+oefencases/blauwe-piste/Hangman solution/Hangman/obj
+oefencases/blauwe-piste/Hangman solution/Hangman/bin
+oefencases/blauwe-piste/Hangman solution/Hangman.Tests/obj
+oefencases/blauwe-piste/Hangman solution/Hangman.Tests/bin
+**/.vs
+oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor/obj
+oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor/bin
+oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/obj
+oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/bin
+javascript-taal/hipnieuwjs/node_modules
+javascript-taal/hipnieuwjs/dist
+javascript-taal/hipnieuwjs/.cache
+advanced-html-css/sockserver/node_modules
+pragmatic-javascript/tstestjes/node_modules
+pragmatic-javascript/tstestjes/dist
