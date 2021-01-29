@@ -1,0 +1,10 @@
+
+
+input {
+    border: 2px solid purple;
+    padding: 7px;
+}
+
+td img {
+    max-width: 150px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>webpack oefening</title>
+    <script src="dom.js"></script>
+    <link rel="stylesheet" href="default.css">
+</head>
+
+<body>
+    <form onsubmit="addTea(); return false;">
+        <ol>
+            <li>
+                <label for="input-flavor"></label>
+                <input type="text" id="input-flavor">
+            </li>
+            <li>
+                <label for="input-photo"></label>
+                <input type="url" id="input-photo">
+            </li>
+            <li>
+                <button>Voeg thee toe</button>
+            </li>
+        </ol>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Smaak</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>4</td>
+                <td>Kaneel</td>
+                <td><img src="https://www.appiehein.com/3810-large_default/kaneelthee-pickwick.jpg"></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Appeltaartthee</td>
+                <td><img
+                        src="https://www.pickwick.nl/globalassets/images622/pickwick-nl/nieuws/pickwick_applepie.png?preset=article-image-mobile">
+                </td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Muntthee</td>
+                <td><img src="https://goedetengezondleven.nl/wp-content/uploads/2016/05/muntthee-gezond.jpg"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
