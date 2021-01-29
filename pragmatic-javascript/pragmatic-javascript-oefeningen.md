@@ -86,3 +86,14 @@ Maak een kleine webapplicatie met een tabelletje met data en een formulier om ni
 
 => bundle deze webapplicatie met webpack
 => je mag je kennis over HTML/CSS/JS/DOM API even opnieuw toepassen hier als je wil. Je mag ook [deze starter pakken](https://github.com/JPtenBerge/belastingdienst-case-2020/tree/master/pragmatic-javascript/webpack-oefening)
+
+## Oefening 6: een backend
+
+* Serveer de pagina met de tabel inclusief CSS en JavaScript als static files.
+* Creëer een REST API om data (thee):
+  - van op te halen (GET)
+  - toe te voegen (POST)
+
+Je mag zelf kiezen of je daar Express.js, Nest.js of iets anders voor wil gebruiken.
+
+Tijd over? Koppel de pagina en de REST API met AJAX voor zowel het ophalen als toevoegen van items.

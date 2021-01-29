@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title Welkom bij de PUG-template
+    body
+        h1 Welkom!
+        p Hier een welkomstboodschap: #{message}
+
+        form(action="/tea", method="post")
+            ol
+                li
+                    label Smaak:
+                    input(type="text", name="flavor")
+                li
+                    label Foto:
+                    input(type="url", name="photo")
+                li
+                    button Submit
+        
+        ul
+            each tea in teas
+                li #{tea.flavor}
+                    img(src=tea.photo)
