@@ -85,4 +85,4 @@ Hang je project ook in een git repo. Stryker leest aan de hand van je git-inform
 Maak een kleine webapplicatie met een tabelletje met data en een formulier om nieuwe items toe te voegen aan die tabel. Neem een logo op bovenaan de pagina en style het formulier een beetje leuk.
 
 => bundle deze webapplicatie met webpack
-=> eventueel kun je uit `javascript-taal/javascript` mijn `index.html` en `dom.js` pakken voor de functionaliteit.
+=> je mag je kennis over HTML/CSS/JS/DOM API even opnieuw toepassen hier als je wil. Je mag ook [deze starter pakken](https://github.com/JPtenBerge/belastingdienst-case-2020/tree/master/pragmatic-javascript/webpack-oefening)
