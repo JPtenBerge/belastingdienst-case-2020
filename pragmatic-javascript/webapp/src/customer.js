@@ -1,8 +1,10 @@
 export class Customer {
-    nrOfStuffBought = 0;
+    // webpack doesn't support this yet
+    // nrOfStuffBought = 0;
 
     constructor() {
         console.log('Hoi customer hier');
+        this.nrOfStuffBought = 0;
     }
     buy() {
         this.nrOfStuffBought++;

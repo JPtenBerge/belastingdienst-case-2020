@@ -1,11 +1,10 @@
 
-// import { Customer } from './customer.js';
+import { Customer } from './customer.js';
 import './default.css';
 import kitten from './superschattige-kitten.jpg';
 
+let jp = new Customer();
 document.querySelector('#btn-klik-hier').addEventListener('click', () => {
-    let jp = new Customer();
-
     console.log('halloooo');
 
     jp.buy();

@@ -28,10 +28,6 @@ module.exports = {
     ],
     module: {
         rules: [
-            // {
-            //     test: /\.js$/i,
-            //     use: ['']
-            // },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader']
