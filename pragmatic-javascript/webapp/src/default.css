@@ -1,0 +1,16 @@
+
+
+#btn-klik-hier {
+    background: purple;
+    color: white;
+    box-shadow: 0 0 3px 2px red;
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+body {
+    background: url(superschattige-kitten.jpg);
+}
