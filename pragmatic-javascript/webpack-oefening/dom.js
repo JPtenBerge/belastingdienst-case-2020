@@ -26,3 +26,9 @@ function addTea() {
 
     document.querySelector('table tbody').appendChild(newTr);
 }
+
+document.querySelector('#tea-form').addEventListener('submit', event => {
+    event.preventDefault();
+    event.stopPropagation();
+    addTea();
+});
