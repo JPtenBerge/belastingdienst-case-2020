@@ -105,3 +105,17 @@ Maak een kleine webapplicatie met een tabelletje met data en een formulier om ni
 Je mag zelf kiezen of je daar Express.js, Nest.js of iets anders voor wil gebruiken.
 
 Tijd over? Koppel de pagina en de REST API met AJAX voor zowel het ophalen als toevoegen van items.
+
+---
+
+## Oefening 7: een frontend
+
+Realiseer de pagina van eerste (tabel met form) met Vue. Roep je backend APIs aan om de data op te halen en nieuwe data toe te voegen.
+
+```sh
+npm install --global @vue/cli
+vue create naam-van-je-project
+[maak keuzes]
+cd naam-van-je-project
+npm run serve
+```
