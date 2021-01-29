@@ -80,7 +80,7 @@ stryker run
 
 Hang je project ook in een git repo. Stryker leest aan de hand van je git-informatie uit welke bestanden er in je project zitten.
 
-## Oefening 4: bundlen met webpack
+## Oefening 5: bundlen met webpack
 
 Maak een kleine webapplicatie met een tabelletje met data en een formulier om nieuwe items toe te voegen aan die tabel. Neem een logo op bovenaan de pagina en style het formulier een beetje leuk.
 
