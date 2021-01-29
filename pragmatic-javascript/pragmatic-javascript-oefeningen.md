@@ -29,6 +29,8 @@ En installeer ook vooral de extensie ESLint voor VS Code.
 
 Uitwerking van de bankoefening staat ook in de Pragmatic JavaScript-folder.
 
+---
+
 ## Oefening 3: unittest jullie bankapplicatie
 
 - Of het transferren van money "correct" gaat
@@ -52,6 +54,8 @@ npm test
 Maar voel je vrij om andere combinaties erbij te pakken:
 - karma/jasmine (krijgen jullie ook nog bij Angular)
 - jest
+
+---
 
 ## Oefening 4: integreer code coverage en Stryker in je applicatie
 
@@ -80,12 +84,16 @@ stryker run
 
 Hang je project ook in een git repo. Stryker leest aan de hand van je git-informatie uit welke bestanden er in je project zitten.
 
+---
+
 ## Oefening 5: bundlen met webpack
 
 Maak een kleine webapplicatie met een tabelletje met data en een formulier om nieuwe items toe te voegen aan die tabel. Neem een logo op bovenaan de pagina en style het formulier een beetje leuk.
 
-=> bundle deze webapplicatie met webpack
-=> je mag je kennis over HTML/CSS/JS/DOM API even opnieuw toepassen hier als je wil. Je mag ook [deze starter pakken](https://github.com/JPtenBerge/belastingdienst-case-2020/tree/master/pragmatic-javascript/webpack-oefening)
+* bundle deze webapplicatie met webpack
+* je mag je kennis over HTML/CSS/JS/DOM API even opnieuw toepassen hier als je wil. Je mag ook [deze starter pakken](https://github.com/JPtenBerge/belastingdienst-case-2020/tree/master/pragmatic-javascript/webpack-oefening)
+
+---
 
 ## Oefening 6: een backend
 
