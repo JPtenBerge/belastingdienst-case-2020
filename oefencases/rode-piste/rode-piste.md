@@ -67,6 +67,6 @@ Tijd over?
 
 ## Blok 5: Front-end Development
 
-Herbouw het scherm van us01, auto aanbieden voor onderhoud, met Vue en TypeScript. Ga hierbij te werk volgens de TDD-werkwijze. Het `any` keyword is verboden in je Vue-project.
+Herbouw het scherm van us01, auto aanbieden voor onderhoud, met een lichtgewicht view library als Vue of React in combinatie met TypeScript. Ga hierbij te werk volgens de TDD-werkwijze. Het `any` keyword is verboden in dit frontend-project.
 
 Zoals voorheen hoort dit scherm verder uiterst gebruiksvriendelijk te zijn. Begeleid de gebruiker op een gebruiksvriendelijke manier door het formulier en haar verschillende tussenstappen (auto nog registreren, bestuurder nog registreren).
