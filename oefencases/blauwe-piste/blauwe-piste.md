@@ -54,8 +54,8 @@ Tijd over?
 
 ## Blok 5: Front-end Development
 
-* Gebruik JavaScript i.c.m. AJAX om het spel te laten werken. Hierbij kun je voor verschillende opzetten gaan:
-  * Iedere lettergok naar de server communiceren via AJAX
-  * Het te raden woord via AJAX ophalen van de server, de werking van het spel met JavaScript regelen en alle statistieken en het resultaat opsturen wanneer het spel klaar is
+Gebruik JavaScript i.c.m. AJAX om het spel te laten werken. Hierbij kun je voor verschillende opzetten gaan:
+* Iedere lettergok naar de server communiceren via AJAX
+* Het te raden woord via AJAX ophalen van de server, de werking van het spel met JavaScript regelen en alle statistieken en het resultaat opsturen wanneer het spel klaar is
 
 Als je het aandurft, mag je er ook voor kiezen om de voorkant te herbouwen met een lichtgewicht view library als Vue of React. Gebruik hier dan ook gerust TypeScript bij. Het `any` keyword is dan verboden.
