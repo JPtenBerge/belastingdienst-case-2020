@@ -64,3 +64,9 @@ Gebruik voor deze versleuteling X509-certificaten.
 Tijd over?
 * Ga verder met de opdracht van de WCF-services.
 * Verbeter je unittests met nieuw verkregen inzichten van de training.
+
+## Blok 5: Front-end Development
+
+Herbouw het scherm van us01, auto aanbieden voor onderhoud, met Vue en TypeScript. Ga hierbij te werk volgens de TDD-werkwijze. Het `any` keyword is verboden in je Vue-project.
+
+Zoals voorheen hoort dit scherm verder uiterst gebruiksvriendelijk te zijn. Begeleid de gebruiker op een gebruiksvriendelijke manier door het formulier en haar verschillende tussenstappen (auto nog registreren, bestuurder nog registreren).
