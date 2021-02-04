@@ -1,20 +1,10 @@
-oefencases/blauwe-piste/Hangman solution/Hangman/obj
-oefencases/blauwe-piste/Hangman solution/Hangman/bin
-oefencases/blauwe-piste/Hangman solution/Hangman.Tests/obj
-oefencases/blauwe-piste/Hangman solution/Hangman.Tests/bin
 **/.vs
-oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor/obj
-oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor/bin
-oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/obj
-oefencases/blauwe-piste/Hangman blazor solution/HangmanBlazor.Tests/bin
 **/node_modules
-javascript-taal/hipnieuwjs/dist
-javascript-taal/hipnieuwjs/.cache
-advanced-html-css/sockserver/node_modules
-pragmatic-javascript/tstestjes/node_modules
-pragmatic-javascript/tstestjes/dist
-pragmatic-javascript/typescriptoefeningbank/dist
+**/dist
+**/.cache
+**/node_modules
 **/.nyc_output
 **/coverage
 **/reports
-pragmatic-javascript/webapp/dist
+**/bin
+**/obj
