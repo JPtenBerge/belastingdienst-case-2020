@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hangman.Models
@@ -15,6 +16,7 @@ namespace Hangman.Models
 
 		public int GameId { get; set; }
 
+		[JsonIgnore]
 		public GameModel Game { get; set; }
 	}
 }
