@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+
+
+	<button onclick="addPretpark();">Submit iets</button>
+
+	<ul id="pretparken">
+		<li>Efteling is 8/10</li>
+		<li>Walibi is 9/10</li>
+	</ul>
+
+	<script>
+		function addPretpark() {
+			let xhr = new XMLHttpRequest();
+			xhr.open('POST', 'http://localhost:61303/api/pretpark');
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.onreadystatechange = function (event) {
+				if (event.target.readyState == XMLHttpRequest.DONE) {
+					let pretparken = JSON.parse(event.target.responseText);
+					renderPretparken(pretparken);
+				}
+			};
+			xhr.send(JSON.stringify({
+				name: 'Bobbejaanland',
+				rating: 3
+			}));
+		}
+
+		function renderPretparken(pretparken) {
+			// clear current pretparken
+			document.querySelectorAll('#pretparken li').forEach(li => li.remove());
+
+			// add each pretparken
+			// lomp en langzaam, maar wel kort
+			for (let pretpark of pretparken) {
+				document.querySelector('#pretparken').innerHTML += `<li>${pretpark.name} krijgt een ${pretpark.rating}</li>`;
+			}
+		}
+	</script>
+
+</body>
+
+</html>
