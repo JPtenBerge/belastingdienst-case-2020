@@ -48,3 +48,8 @@
 p {
 	margin-bottom: 16px;
 }
+#error-message {
+	padding-top: 20px;
+	clear: both;
+	color: red;
+}

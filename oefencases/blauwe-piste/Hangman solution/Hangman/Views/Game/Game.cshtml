@@ -1,6 +1,10 @@
 ﻿@inject GameConfig GameConfig
 @model GameModel
 
+@section scripts {
+	<script src="~/js/guess.js"></script>
+}
+
 <div id="game-container">
 	@* Visual Hangman representation, thanks to https://codepen.io/jaga3421/pen/Joedvr *@
 	@{
@@ -66,45 +70,27 @@
 								 "W", "X", "Y", "Z"};
 		}
 
-		@if (!Model.WordGuessed && Model.NrOfIncorrectGuesses != GameConfig.MaxNrOfGuesses)
-		{
-			<ul id="letters">
-				@foreach (var letter in letters)
-				{
-					<li class="@(Model.GuessedLetters.Select(x => x.Letter).Contains(letter) ? "guessed" : "")">
-						<a href="/game/@Model.Id/guess?letter=@letter">@letter</a>
-					</li>
-				}
-			</ul>
-		}
-
-		@*Show error messages, but only when the word hasn't been guessed yet *@
-		@if (!Model.WordGuessed && !ViewContext.ModelState.IsValid)
-		{
-			var errorEntries = ViewContext.ModelState.Values.Where(x => x.ValidationState == ModelValidationState.Invalid);
-
-			foreach (var entry in errorEntries)
+		<ul id="letters">
+			@foreach (var letter in letters)
 			{
-				<p>@entry.Errors[0].ErrorMessage</p>
+				<li class="letter-@(letter) @(Model.GuessedLetters.Select(x => x.Letter).Contains(letter) ? "guessed" : "")">
+					<a onclick="guess('@letter'); return false;">@letter</a>
+				</li>
 			}
-		}
+		</ul>
 
-		@if (Model.WordGuessed)
-		{
-			<div class="box good">
-				<div class="content">
-					<p id="word-guessed">Je hebt het woord geraden! Goed bezig!</p>
-				</div>
-			</div>
-		}
+		<p id="error-message"></p>
 
-		@if (!Model.WordGuessed && Model.NrOfIncorrectGuesses == GameConfig.MaxNrOfGuesses)
-		{
-			<div class="box bad">
-				<div class="content">
-					<p id="word-not-guessed">Helaas, volgende keer beter...</p>
-				</div>
+		<div class="box good" hidden>
+			<div class="content">
+				<p id="word-guessed">Je hebt het woord geraden! Goed bezig!</p>
 			</div>
-		}
+		</div>
+
+		<div class="box bad" hidden>
+			<div class="content">
+				<p id="word-not-guessed">Helaas, volgende keer beter...</p>
+			</div>
+		</div>
 	</div>
 </div>
