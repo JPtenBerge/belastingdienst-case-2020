@@ -1,8 +1,14 @@
-﻿function guess(letter) {
-	// get gameId from URL
-	let gameId = +window.location.pathname.split('/').pop();
+﻿
+// the user might press F5 mid-game. we need to initialize the game properly
+function init() {
+	fetch(`/api/game/${getGameId()}`).then(x => x.json()).then(gameState => {
+		renderGame(gameState);
+	});
+}
+init();
 
-	fetch(`/api/game/${gameId}/guess`, {
+function guess(letter) {
+	fetch(`/api/game/${getGameId()}/guess`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -20,28 +26,35 @@
 			return res;
 		})
 		.then(gameState => {
-			// update the word with the newly guessed letter
-			let guessedLetters = gameState.guessedLetters.map(x => x.letter);
-			updateWord(gameState.wordToGuess.word, guessedLetters);
-			updateNrOfTries(gameState.nrOfIncorrectGuesses);
-			disableGuessedLetters(guessedLetters);
+			renderGame(gameState);
 
-			// has the word been guessed?
-			if (gameState.wordGuessed) {
-				handleWordGuessed();
-				return Promise.resolve();
-			}
-
-			// has the maximum number of guesses been reached?
-			if (gameState.nrOfIncorrectGuesses === 5) {
-				handleWordNotGuessed(gameState.wordToGuess.word);
-				return Promise.resolve();
-			}
 		})
 		.catch(err => {
 			let [key] = Object.keys(err);
 			document.querySelector('#error-message').innerText = err[key];
 		});
+}
+
+function renderGame(gameState) {
+	// get an array of individual letters, that's easy to .include() on
+	let guessedLetters = gameState.guessedLetters.map(x => x.letter);
+	let word = gameState.wordToGuess.word.toUpperCase();
+
+	updateWord(word, guessedLetters);
+	updateNrOfTries(gameState.nrOfIncorrectGuesses);
+	disableGuessedLetters(guessedLetters);
+
+	// has the word been guessed?
+	if (gameState.wordGuessed) {
+		handleWordGuessed();
+		return Promise.resolve();
+	}
+
+	// has the maximum number of guesses been reached?
+	if (gameState.nrOfIncorrectGuesses === 5) {
+		handleWordNotGuessed(gameState.wordToGuess.word);
+		return Promise.resolve();
+	}
 }
 
 function disableGuessedLetters(letters) {
@@ -56,7 +69,6 @@ function disableGuessedLetters(letters) {
 }
 function updateWord(word, guessedLetters) {
 	let wordEl = document.querySelector('#word-to-guess');
-
 	word = word.toUpperCase();
 
 	// clear current word
@@ -97,4 +109,9 @@ function handleWordNotGuessed(word) {
 	document.querySelector('.box.bad').removeAttribute('hidden');
 	document.querySelector('#letters').setAttribute('hidden', '');
 	updateWord(word, word.toUpperCase().split(''));
+}
+
+function getGameId() {
+	// get gameId from URL
+	return +window.location.pathname.split('/').pop();
 }

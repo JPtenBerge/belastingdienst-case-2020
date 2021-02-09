@@ -36,32 +36,7 @@
 	</div>
 
 	<div>
-		@* Show the word to guess *@
-		<p id="word-to-guess">
-			@* if game is over and word has not been guessed, show word *@
-			@if (!Model.WordGuessed && Model.NrOfIncorrectGuesses == GameConfig.MaxNrOfGuesses)
-			{
-				<text>@Model.WordToGuess.Word</text>
-			}
-			else
-			{
-				foreach (var letter in Model.WordToGuess.Word)
-				{
-					if (letter.ToString() == " ")
-					{
-						<span>&nbsp;</span>
-					}
-					else if (!Model.GuessedLetters.Select(x => x.Letter).Contains(letter.ToString().ToUpper()))
-					{
-						<span>_</span>
-					}
-					else
-					{
-						<span>@letter</span>
-					}
-				}
-			}
-		</p>
+		<p id="word-to-guess"></p>
 
 		@* Show the letters *@
 		@{
