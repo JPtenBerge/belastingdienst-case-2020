@@ -59,3 +59,9 @@ Gebruik JavaScript i.c.m. AJAX om het spel te laten werken. Hierbij kun je voor 
 * Het te raden woord via AJAX ophalen van de server, de werking van het spel met JavaScript regelen en alle statistieken en het resultaat opsturen wanneer het spel klaar is
 
 Als je het aandurft, mag je er ook voor kiezen om de voorkant te herbouwen met een lichtgewicht view library als Vue of React. Gebruik hier dan ook gerust TypeScript bij. Het `any` keyword is dan verboden.
+
+Zet een CI/CD-pipeline op waarbij de gehele frontendapplicatie wordt gereleased naar een bepaalde omgeving. Hierbij wordt zowel de .NET-code als de TypeScript-/JavaScript-code gebuild en geminified.
+
+## Blok 6: Continuous Delivery
+
+Zet een CI/CD-pipeline op waarbij de gehele frontendapplicatie kan worden gereleased naar een bepaalde omgeving. Hierbij wordt zowel de .NET-code als de TypeScript-/JavaScript-code gebuild en geminified.

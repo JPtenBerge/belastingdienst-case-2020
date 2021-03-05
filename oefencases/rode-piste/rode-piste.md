@@ -70,3 +70,7 @@ Tijd over?
 Herbouw het scherm van us01, auto aanbieden voor onderhoud, met een lichtgewicht view library als Vue of React in combinatie met TypeScript. Ga hierbij te werk volgens de TDD-werkwijze. Het `any` keyword is verboden in dit frontend-project.
 
 Zoals voorheen hoort dit scherm verder uiterst gebruiksvriendelijk te zijn. Begeleid de gebruiker op een gebruiksvriendelijke manier door het formulier en haar verschillende tussenstappen (auto nog registreren, bestuurder nog registreren).
+
+## Blok 6: Continuous Delivery
+
+Zet een CI/CD-pipeline op waarbij de gehele frontendapplicatie kan worden gereleased naar een bepaalde omgeving. Hierbij wordt zowel de .NET-code als de TypeScript-/JavaScript-code gebuild en geminified.
